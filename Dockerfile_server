@@ -1,0 +1,22 @@
+# syntax=docker/dockerfile:experimental
+
+FROM node:12.11 as env
+
+ENV USER server
+ENV DIR /home/$USER/
+
+RUN addgroup ${USER} \
+  && useradd -m -g ${USER} ${USER} 
+
+WORKDIR $DIR
+COPY --chown=server:server ./server/package*.json $DIR
+
+RUN npm ci \
+  && chown ${USER} ./ \
+  && wget https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-linux-amd64 -O /usr/local/bin/mkcert \
+  && chmod +x /usr/local/bin/mkcert \
+  && apt-get update \
+  && apt-get install libnss3-tools -y \
+  && mkcert -key-file key.pem -cert-file cert.pem localhost \
+  && chown server key.pem \
+  && chown server cert.pem 

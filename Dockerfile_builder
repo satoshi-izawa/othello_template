@@ -1,0 +1,13 @@
+FROM node:13.5 as env
+
+ARG USER
+ARG WORK
+
+RUN addgroup ${USER} \
+  && useradd -m -g ${USER} ${USER}
+
+WORKDIR $WORK
+COPY --chown=${USER}:${USER} ./client/config_files ${WORK}/config_files
+
+RUN ls -a --file-type config_files | grep -v / | xargs -I {} -n1 ln -s "config_files/"{} {} \
+  && npm ci

@@ -1,0 +1,36 @@
+version: '3.7'
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile_builder
+      args:
+        USER: $CONTAINER_USER
+        WORK: $CONTAINER_WORK
+    tty: true
+    volumes:
+      - $PWD/client/src:$CONTAINER_WORK/src
+      - $PWD/client/config_files:$CONTAINER_WORK/config_files
+      - server_assets:$CONTAINER_WORK/dist
+    user: $CONTAINER_USER
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile_server
+    volumes:
+      - $PWD/server/index.js:/home/server/index.js
+      - $PWD/server/package-lock.json:/home/server/package-lock.json
+      - $PWD/server/package.json:/home/server/package.json
+      - server_assets:/home/server/assets
+    command: node ./index.js
+    ports:
+      - "127.0.0.1:3000:3000"
+    user: server
+
+volumes:
+  server_assets:
+    driver_opts: 
+      type: none
+      device: $PWD/assets
+      o: bind

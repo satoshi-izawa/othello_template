@@ -1,0 +1,55 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+    },
+    "csscomb.formatOnSave": true,
+    "editor.renderWhitespace": "all",
+    "files.insertFinalNewline": true,
+    "editor.tabSize": 2,
+    "files.eol": "\n",
+    "scss.validate": false,
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "scss.scannerExclude": [
+      "**/.git",
+      "**/node_modules",
+      "**/bower_components"
+    ],
+    "eslint.validate": [
+      "typescript",
+      "typescriptreact",
+      "javascript",
+      "javascriptreact"
+    ],
+  },
+  "extensions": {
+    "recommendations": [
+      "clinyong.vscode-css-modules",
+      "mrmlnc.vscode-csscomb",
+      "mrmlnc.vscode-scss",
+      "msjsdiag.debugger-for-chrome",
+      "shinnn.stylelint",
+      "dbaeumer.vscode-eslint"
+    ]
+  },
+  "launch": {
+    "configurations": [
+      {
+        "type": "chrome",
+        "request": "attach",
+        "name": "Attach to Chrome",
+        "urlFilter": "http://localhost.org:1080",
+        "port": 9222,
+        "webRoot": "${workspaceFolder}"
+      },
+    ],
+    "compounds": []
+  }
+}
