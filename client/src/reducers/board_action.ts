@@ -3,10 +3,15 @@ import { BoardActionType } from 'src/reducers/board_reducer';
 
 const action = {
   /** 石を追加するアクション */
-  add: (x: number, y: number) => dispatch({
+  add: (y: number, x: number) => dispatch({
     type: BoardActionType.ADD,
-    x,
     y,
+    x,
+  }),
+  /** ターン交代 */
+  changeTurn: () => dispatch({
+    type: BoardActionType.CHANGE_TURN,
+    test: true,
   }),
 };
 
