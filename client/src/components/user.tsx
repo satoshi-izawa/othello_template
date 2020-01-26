@@ -2,19 +2,23 @@ import React from 'react';
 import { Reducers } from 'src/store';
 import { connect } from 'react-redux';
 
+const style = require('./scss/user.scss');
+
 
 const distributeState = ({ Board }: Reducers) => ({ Board });
 type IProps = ReturnType<typeof distributeState>;
 
-/** ユーザーを管理するコンテナコンポーネント */
-const UserComponent2 = (_props: IProps) =>
-  // console.log(_props.Board.turn);
+/** ユーザーを管理するコンポーネント */
+const UserComponent2 = (props: IProps) => {
+  const { Board } = props;
+  const { turn } = Board;
 
-  (
-    <p>
-      Your Turn:「
-      {_props.Board.turn}
-      」
+  return (
+    <p className={style.name}>
+      Your Turn
+      <br />
+      <span>{turn}</span>
     </p>
   );
+};
 export const UserComponent = connect(distributeState)(UserComponent2);

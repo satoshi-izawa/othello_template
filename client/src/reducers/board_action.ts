@@ -8,11 +8,6 @@ const action = {
     y,
     x,
   }),
-  /** ターン交代 */
-  changeTurn: () => dispatch({
-    type: BoardActionType.CHANGE_TURN,
-    test: true,
-  }),
 };
 
 export {

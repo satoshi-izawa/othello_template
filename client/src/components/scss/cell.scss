@@ -1,0 +1,32 @@
+.cells{
+  width: percentage(1 / 8);
+  border: 2px solid #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cell{
+  display: block;
+  border-radius: 50%;
+  width: 80%;
+  height: 80%;
+  text-align: center;
+  font-size: 10px;
+  cursor: pointer;
+}
+.black{
+  border: 2px solid #c9c9c9;
+  background-color: #000;
+}
+.white{
+  border: 2px solid #c9c9c9;
+  background-color: #fff;
+}
+
+.disable{
+  background-color: rgba(0, 0, 0, 0.3);
+
+  .cell{
+    cursor: default;
+  }
+}

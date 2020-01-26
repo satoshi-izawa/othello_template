@@ -1,0 +1,10 @@
+.board{
+	display: flex;
+	flex-wrap: wrap;
+  background-color: #306437;
+  width: 80vh;
+  height: 80vh;
+  margin: 0 auto;
+  list-style: none;
+  border: 2px solid #111;
+}
